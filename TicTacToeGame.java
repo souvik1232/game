@@ -61,6 +61,54 @@ public class TicTacToeGame {
         return toss;
 
     }
+    //UserCase7
+    public static String checkWinner(char[] board)
+    {
+        for (int a =1 ; a < 9; a++) {
+            String line = null;
+            switch (a) {
+                case 1:
+                    line = String.valueOf(board[1]) +String.valueOf(board[2])+ String.valueOf(board[3]);
+                    break;
+                case 2:
+                    line = String.valueOf(board[4]) + String.valueOf(board[5]) + String.valueOf(board[6]);
+                    break;
+                case 3:
+                    line = String.valueOf(board[7]) + String.valueOf(board[8]) + String.valueOf(board[9]);
+                    break;
+                case 4:
+                    line = String.valueOf(board[1]) + String.valueOf(board[4]) + String.valueOf(board[7]);
+                    break;
+                case 5:
+                    line = String.valueOf(board[2]) + String.valueOf(board[2]) + String.valueOf(board[8]);
+                    break;
+                case 6:
+                    line = String.valueOf(board[3]) + String.valueOf(board[6]) + String.valueOf(board[9]);
+                    break;
+                case 7:
+                    line = String.valueOf(board[1]) + String.valueOf(board[5]) + String.valueOf(board[9]);
+                    break;
+                case 8:
+                    line = String.valueOf(board[3]) + String.valueOf(board[5]) + String.valueOf(board[7]);
+                    break;
+            }
+            if (line.equals("XXX")) {
+                return "X";
+            }
+            else if (line.equals("OOO")) {
+                return "O";
+            }
+        }
+        for (int a = 1; a <= 9; a++) {
+            if (board[a]==' ') {
+                break;
+            }
+            else if (a == 8) {
+                return "draw";
+            }
+        }
+        return null;
+    }
     public static void main(String[] args) {
         System.out.println("Welcome to TicTacToe");
         String player = null;
