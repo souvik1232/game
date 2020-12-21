@@ -53,8 +53,14 @@ public class TicTacToeGame {
         }
         displayBoard(Board);
     }
+    //UserCase6
+    public static int toss()
+    {
+        Random random = new Random();
+        int toss = random.nextInt(2);//Random Value Created
+        return toss;
 
-
+    }
     public static void main(String[] args) {
         System.out.println("Welcome to TicTacToe");
         String player = null;
