@@ -15,32 +15,46 @@ public class TicTacToeGame {
         }
         return board;
     }
+
     //UserCase2
-    public static String[] inputBoard(String player,String computer)
-    {
+    public static String[] inputBoard(String player, String computer) {
         String[] Choice = new String[2];
         System.out.println("Choose Between X or O");
         player = scanner.next().toUpperCase();//Asking user input choice
-        if(player.equals("X")) {
+        if (player.equals("X")) {
             computer = "O";
-        }
-        else if (player.equals("O")) {
+        } else if (player.equals("O")) {
             computer = "X";
         }
         Choice[0] = player;
         Choice[1] = computer;
         return Choice;
     }
+
     //UserCase3
-    public static void displayBoard(char[] Board)
-    {
-        for(int i = 1 ; i < Board.length ;i++)
-        {
-            System.out.print("|_"+Board[i] + "_|"); //Printing the board
-            if(i%3 == 0)
+    public static void displayBoard(char[] Board) {
+        for (int i = 1; i < Board.length; i++) {
+            System.out.print("|_" + Board[i] + "_|"); //Printing the board
+            if (i % 3 == 0)
                 System.out.println();
         }
     }
+    //UserCase4
+    public static void userInput(char[] Board, String player) {
+
+        System.out.println("Players Turn");
+        System.out.println("Enter the location u want to make a move(1-9)");
+        int move = scanner.nextInt();
+        if (Board[move] == ' ')//UserCase5
+        {
+            Board[move] = player.charAt(0);
+        } else {
+            System.out.println("Wrong move");
+        }
+        displayBoard(Board);
+    }
+
+
     public static void main(String[] args) {
         System.out.println("Welcome to TicTacToe");
         String player = null;
@@ -48,5 +62,6 @@ public class TicTacToeGame {
         char[] board = createBoard();
         String[] input = inputBoard(player,computer);
         displayBoard(board);
+        userInput(board,input[0]);
     }
 }
