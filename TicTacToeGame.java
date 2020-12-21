@@ -18,6 +18,6 @@ public class TicTacToeGame {
 
     public static void main(String[] args) {
         System.out.println("Welcome to TicTacToe");
-//        char[] board = createBoard();
+        char[] board = createBoard();
     }
 }
