@@ -45,7 +45,7 @@ public class TicTacToeGame {
         System.out.println("Players Turn");
         System.out.println("Enter the location u want to make a move(1-9)");
         int move = scanner.nextInt();
-        if (Board[move] == ' ')//UserCase5
+        if (Board[move] == ' ') //UserCase5
         {
             Board[move] = player.charAt(0);
         } else {
