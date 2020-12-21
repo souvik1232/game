@@ -40,18 +40,65 @@ public class TicTacToeGame {
         }
     }
     //UserCase4
-    public static void userInput(char[] Board, String player) {
-
-        System.out.println("Players Turn");
-        System.out.println("Enter the location u want to make a move(1-9)");
-        int move = scanner.nextInt();
-        if (Board[move] == ' ') //UserCase5
-        {
-            Board[move] = player.charAt(0);
-        } else {
-            System.out.println("Wrong move");
-        }
-        displayBoard(Board);
+    public static void userInput(char [] Board,String player,String computer,int toss)
+    {
+        Random random = new Random();
+        String winner = null;
+        int count = 1;
+        int turn ;
+        boolean stat = false;
+        if (toss == 0)
+            turn = 1;
+        else
+            turn = 2;
+        do {
+            if (turn == 1) {
+                do {
+                    System.out.println("Players Turn");
+                    System.out.println("Enter the location u want to make a move(1-9)");
+                    int move = scanner.nextInt();
+                    if (Board[move] == ' ')//UserCase5
+                    {
+                        Board[move] = player.charAt(0);
+                        count++;
+                        stat = true;
+                    }
+                    else {
+                        System.out.println("Wrong move");
+                        stat = false;
+                    }
+                    displayBoard(Board);
+                    turn = 2;
+                }while (!stat);
+            }
+            else if (turn == 2){//UserCase8
+                do {
+                    System.out.println("Computers Turn");
+                    int move = (random.nextInt(9)) + 1;
+                    if (Board[move] == ' ')//UserCase5
+                    {
+                        Board[move] = computer.charAt(0);
+                        count++;
+                        stat = true;
+                    }
+                    else {
+                        System.out.println("Wrong move");
+                        stat =false;
+                    }
+                    displayBoard(Board);
+                    turn = 1;
+                }while (!stat);
+            }
+            winner = checkWinner(Board);
+            if (winner != null)
+                break;
+        }while(count<=9 );
+        if (winner.equals(player))
+            System.out.println("Player wins");
+        else if (winner.equals(computer))
+            System.out.println("Computer wins");
+        else
+            System.out.println("Draw");
     }
     //UserCase6
     public static int toss()
@@ -110,12 +157,15 @@ public class TicTacToeGame {
         return null;
     }
     public static void main(String[] args) {
-        System.out.println("Welcome to TicTacToe");
+        char choice = ' ';
         String player = null;
         String computer = null;
         char[] board = createBoard();
         String[] input = inputBoard(player,computer);
         displayBoard(board);
-        userInput(board,input[0]);
+        userInput(board,input[0],input[1],toss());
+        System.out.println("Want to play again?- Y/N");
+        choice = scanner.next().charAt(0);
+
     }
 }
