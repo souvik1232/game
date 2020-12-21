@@ -31,11 +31,22 @@ public class TicTacToeGame {
         Choice[1] = computer;
         return Choice;
     }
+    //UserCase3
+    public static void displayBoard(char[] Board)
+    {
+        for(int i = 1 ; i < Board.length ;i++)
+        {
+            System.out.print("|_"+Board[i] + "_|"); //Printing the board
+            if(i%3 == 0)
+                System.out.println();
+        }
+    }
     public static void main(String[] args) {
         System.out.println("Welcome to TicTacToe");
         String player = null;
         String computer = null;
         char[] board = createBoard();
         String[] input = inputBoard(player,computer);
+        displayBoard(board);
     }
 }
